@@ -13,22 +13,6 @@ export default function ProjectCardDemo() {
         onViewDetails={() => console.log("View details")}
         onEdit={() => console.log("Edit")}
       />
-      <ProjectCard
-        title="Mobile Banking App"
-        description="Secure mobile banking application with biometric authentication and real-time transactions."
-        status="completed"
-        tags={["React Native", "Firebase", "Stripe"]}
-        onViewDetails={() => console.log("View details")}
-        onEdit={() => console.log("Edit")}
-      />
-      <ProjectCard
-        title="Legacy CRM System"
-        description="Old customer relationship management system scheduled for migration."
-        status="archived"
-        tags={["PHP", "MySQL", "jQuery"]}
-        onViewDetails={() => console.log("View details")}
-        onEdit={() => console.log("Edit")}
-      />
     </div>
   );
 }

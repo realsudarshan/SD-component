@@ -1,6 +1,13 @@
 import type { Registry } from "shadcn/schema";
+import { bases } from "./registry-bases";
+import { blocks } from "./registry-blocks";
 import { components } from "./registry-components";
 import { examples } from "./registry-examples";
+import { files } from "./registry-files";
+import { fonts } from "./registry-fonts";
+import { hooks } from "./registry-hooks";
+import { libs } from "./registry-libs";
+import { pages } from "./registry-pages";
 import { ui } from "./registry-ui";
 
 // Shared between index and style for backward compatibility.
@@ -26,6 +33,13 @@ export const registry = {
     },
     ...ui,
     ...components,
+    ...blocks,
+    ...hooks,
+    ...libs,
+    ...pages,
+    ...files,
+    ...bases,
+    ...fonts,
     ...examples,
   ] satisfies Registry["items"],
 } satisfies Registry;

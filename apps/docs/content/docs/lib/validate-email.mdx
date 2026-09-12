@@ -1,0 +1,72 @@
+---
+title: Validate Email
+description: Email validation utility function.
+---
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+<CodeBlockCommand command="npx shadcn@latest add https://shadcn-registry-docs-template.pages.dev/r/validate-email.json" />
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="validate-email"
+  title="lib/validate-email.ts"
+  styleName="base-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { validateEmail, isValidEmail } from "@/lib/validate-email"
+```
+
+```tsx
+console.log(validateEmail("test@example.com")) // true
+console.log(validateEmail("invalid-email")) // false
+
+console.log(isValidEmail("user@domain.com")) // true
+console.log(isValidEmail("not-an-email")) // false
+```
+
+## API
+
+### validateEmail
+
+Validates an email address using regex.
+
+**Parameters:**
+- `email` - Email string to validate
+
+**Returns:** Boolean indicating if email is valid
+
+### isValidEmail
+
+Alias for validateEmail function.
+
+**Parameters:**
+- `email` - Email string to validate
+
+**Returns:** Boolean indicating if email is valid

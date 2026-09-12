@@ -1,0 +1,69 @@
+---
+title: Use Toggle
+description: A hook for managing boolean toggle state.
+---
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+<CodeBlockCommand command="npx shadcn@latest add https://shadcn-registry-docs-template.pages.dev/r/use-toggle.json" />
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="use-toggle"
+  title="hooks/use-toggle.ts"
+  styleName="base-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { useToggle } from "@/hooks/use-toggle"
+```
+
+```tsx
+function MyComponent() {
+  const { value, toggle, setTrue, setFalse } = useToggle(false)
+
+  return (
+    <div>
+      <p>Value: {value ? "ON" : "OFF"}</p>
+      <button onClick={toggle}>Toggle</button>
+      <button onClick={setTrue}>Set True</button>
+      <button onClick={setFalse}>Set False</button>
+    </div>
+  )
+}
+```
+
+## API
+
+### Returns
+
+- `value` - Current boolean value
+- `toggle` - Function to toggle the value
+- `setTrue` - Function to set value to true
+- `setFalse` - Function to set value to false
+- `setValue` - Function to set value to any boolean

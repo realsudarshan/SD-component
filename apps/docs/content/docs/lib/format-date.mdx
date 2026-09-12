@@ -1,0 +1,81 @@
+---
+title: Format Date
+description: Utility functions for date formatting.
+---
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+<CodeBlockCommand command="npx shadcn@latest add https://shadcn-registry-docs-template.pages.dev/r/format-date.json" />
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="format-date"
+  title="lib/format-date.ts"
+  styleName="base-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { formatDate, formatTime, formatDateTime } from "@/lib/format-date"
+```
+
+```tsx
+const date = new Date()
+
+console.log(formatDate(date)) // "September 12, 2026"
+console.log(formatTime(date)) // "04:59 PM"
+console.log(formatDateTime(date)) // "September 12, 2026 at 04:59 PM"
+```
+
+## API
+
+### formatDate
+
+Formats a date as a readable date string.
+
+**Parameters:**
+- `date` - Date object or date string
+
+**Returns:** Formatted date string
+
+### formatTime
+
+Formats a date as a readable time string.
+
+**Parameters:**
+- `date` - Date object or date string
+
+**Returns:** Formatted time string
+
+### formatDateTime
+
+Formats a date as a readable date and time string.
+
+**Parameters:**
+- `date` - Date object or date string
+
+**Returns:** Formatted date and time string

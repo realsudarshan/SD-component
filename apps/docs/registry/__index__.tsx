@@ -76,6 +76,104 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
   },
+  "hero-section": {
+    name: "hero-section",
+    type: "registry:block",
+    registryDependencies: ["button"],
+    files: [{
+      path: "src/registry/new-york-v4/blocks/hero-section.tsx",
+      type: "registry:component"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/hero-section.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "use-mobile": {
+    name: "use-mobile",
+    type: "registry:hook",
+    registryDependencies: undefined,
+    files: [{
+      path: "src/registry/new-york-v4/hooks/use-mobile.ts",
+      type: "registry:hook"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/hooks/use-mobile.ts")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "use-toggle": {
+    name: "use-toggle",
+    type: "registry:hook",
+    registryDependencies: undefined,
+    files: [{
+      path: "src/registry/new-york-v4/hooks/use-toggle.ts",
+      type: "registry:hook"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/hooks/use-toggle.ts")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "use-media-query": {
+    name: "use-media-query",
+    type: "registry:hook",
+    registryDependencies: undefined,
+    files: [{
+      path: "src/registry/new-york-v4/hooks/use-media-query.ts",
+      type: "registry:hook"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/hooks/use-media-query.ts")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "use-local-storage": {
+    name: "use-local-storage",
+    type: "registry:hook",
+    registryDependencies: undefined,
+    files: [{
+      path: "src/registry/new-york-v4/hooks/use-local-storage.ts",
+      type: "registry:hook"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/hooks/use-local-storage.ts")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "format-date": {
+    name: "format-date",
+    type: "registry:lib",
+    registryDependencies: undefined,
+    files: [{
+      path: "src/registry/new-york-v4/lib/format-date.ts",
+      type: "registry:lib"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/lib/format-date.ts")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "validate-email": {
+    name: "validate-email",
+    type: "registry:lib",
+    registryDependencies: undefined,
+    files: [{
+      path: "src/registry/new-york-v4/lib/validate-email.ts",
+      type: "registry:lib"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/lib/validate-email.ts")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
   "button-demo": {
     name: "button-demo",
     type: "registry:example",

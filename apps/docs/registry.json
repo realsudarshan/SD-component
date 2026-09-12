@@ -81,6 +81,93 @@
       ]
     },
     {
+      "name": "hero-section",
+      "type": "registry:block",
+      "title": "Hero Section",
+      "description": "A modern hero section with call-to-action buttons",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "src/registry/new-york-v4/blocks/hero-section.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "use-mobile",
+      "type": "registry:hook",
+      "title": "Use Mobile",
+      "description": "A hook for detecting mobile screen size",
+      "files": [
+        {
+          "path": "src/registry/new-york-v4/hooks/use-mobile.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-toggle",
+      "type": "registry:hook",
+      "title": "Use Toggle",
+      "description": "A hook for managing boolean toggle state",
+      "files": [
+        {
+          "path": "src/registry/new-york-v4/hooks/use-toggle.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-media-query",
+      "type": "registry:hook",
+      "title": "Use Media Query",
+      "description": "A hook for responsive media queries",
+      "files": [
+        {
+          "path": "src/registry/new-york-v4/hooks/use-media-query.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-local-storage",
+      "type": "registry:hook",
+      "title": "Use Local Storage",
+      "description": "A hook for persisting state to localStorage",
+      "files": [
+        {
+          "path": "src/registry/new-york-v4/hooks/use-local-storage.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "format-date",
+      "type": "registry:lib",
+      "title": "Format Date",
+      "description": "Utility functions for date formatting",
+      "files": [
+        {
+          "path": "src/registry/new-york-v4/lib/format-date.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "validate-email",
+      "type": "registry:lib",
+      "title": "Validate Email",
+      "description": "Email validation utility function",
+      "files": [
+        {
+          "path": "src/registry/new-york-v4/lib/validate-email.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
       "name": "button-demo",
       "type": "registry:example",
       "registryDependencies": [
