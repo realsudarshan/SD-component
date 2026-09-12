@@ -1,0 +1,78 @@
+---
+title: Card
+description: Displays a card with header, content, and footer sections.
+---
+
+<ComponentPreview name="card-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+
+<CodeBlockCommand command="npx shadcn@latest add https://shadcn-registry-docs-template.pages.dev/r/card.json" />
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="card"
+  title="components/ui/card.tsx"
+  styleName="base-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+
+## Usage
+
+```tsx
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
+```
+
+```tsx
+<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card description</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Card content</p>
+  </CardContent>
+  <CardFooter>
+    <p>Card footer</p>
+  </CardFooter>
+</Card>
+```
+
+## Reference
+
+### Components
+
+The Card component consists of the following sub-components:
+
+- `Card` - The main card container
+- `CardHeader` - Container for the card title and description
+- `CardTitle` - The card title heading
+- `CardDescription` - The card description text
+- `CardContent` - Container for the card content
+- `CardFooter` - Container for the card footer
+
+All components accept standard HTML element props for their respective elements.
