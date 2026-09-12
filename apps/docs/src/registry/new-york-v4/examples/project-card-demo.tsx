@@ -1,3 +1,5 @@
+"use client";
+
 import { ProjectCard } from "@/registry/new-york-v4/components/project-card";
 
 export default function ProjectCardDemo() {

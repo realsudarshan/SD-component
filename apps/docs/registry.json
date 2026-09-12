@@ -56,6 +56,31 @@
       ]
     },
     {
+      "name": "badge",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/registry/new-york-v4/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "project-card",
+      "type": "registry:component",
+      "registryDependencies": [
+        "card",
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "src/registry/new-york-v4/components/project-card.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "button-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -78,6 +103,19 @@
       "files": [
         {
           "path": "src/registry/new-york-v4/examples/card-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "project-card-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "project-card"
+      ],
+      "files": [
+        {
+          "path": "src/registry/new-york-v4/examples/project-card-demo.tsx",
           "type": "registry:example"
         }
       ]
