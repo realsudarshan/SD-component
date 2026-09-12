@@ -43,9 +43,14 @@ export function RegistryList() {
                 href = `/preview/${item.name}`;
               } else if (type === "registry:ui" || type === "registry:component") {
                 href = `/docs/components/${item.name}`;
+              } else if (type === "registry:block") {
+                href = `/docs/blocks/${item.name}`;
+              } else if (type === "registry:hook") {
+                href = `/docs/hooks/${item.name}`;
+              } else if (type === "registry:lib") {
+                href = `/docs/lib/${item.name}`;
               } else {
-                const category = type.replace("registry:", "");
-                href = `/docs/${category}/${item.name}`;
+                href = `/docs/${item.name}`;
               }
 
               return (
