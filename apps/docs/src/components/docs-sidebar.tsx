@@ -29,7 +29,7 @@ export function DocsSidebar({
       collapsible="none"
       {...props}
     >
-      <SidebarContent className="mx-auto no-scrollbar w-(--sidebar-menu-width) overflow-x-hidden px-2">
+      <SidebarContent className="mx-auto no-scrollbar w-(--sidebar-menu-width) overflow-x-hidden px-2 max-w-[280px]">
         {tree.children.map((item) => {
           const hasLink =
             item.type === "page" ||
@@ -47,12 +47,12 @@ export function DocsSidebar({
                           : (item.index as { url: string }).url
                       }
                     >
-                      {item.name}
+                      <span className="truncate">{item.name}</span>
                     </Link>
                   }
                 />
               ) : (
-                <SidebarGroupLabel>{item.name}</SidebarGroupLabel>
+                <SidebarGroupLabel><span className="truncate block">{item.name}</span></SidebarGroupLabel>
               )}
               <SidebarGroupContent>
                 {item.type === "folder" && (
@@ -62,7 +62,7 @@ export function DocsSidebar({
                         return (
                           <SidebarMenuSubItem key={page.url}>
                             <SidebarMenuSubButton
-                              render={<Link href={page.url}>{page.name}</Link>}
+                              render={<Link href={page.url}><span className="truncate">{page.name}</span></Link>}
                               isActive={page.url === pathname}
                             />
                           </SidebarMenuSubItem>
