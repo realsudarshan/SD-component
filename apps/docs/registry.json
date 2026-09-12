@@ -132,18 +132,6 @@
       ]
     },
     {
-      "name": "use-local-storage",
-      "type": "registry:hook",
-      "title": "Use Local Storage",
-      "description": "A hook for persisting state to localStorage",
-      "files": [
-        {
-          "path": "src/registry/new-york-v4/hooks/use-local-storage.ts",
-          "type": "registry:hook"
-        }
-      ]
-    },
-    {
       "name": "format-date",
       "type": "registry:lib",
       "title": "Format Date",

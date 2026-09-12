@@ -37,16 +37,4 @@ export const hooks: Registry["items"] = [
       },
     ],
   },
-  {
-    name: "use-local-storage",
-    type: "registry:hook",
-    title: "Use Local Storage",
-    description: "A hook for persisting state to localStorage",
-    files: [
-      {
-        path: "hooks/use-local-storage.ts",
-        type: "registry:hook",
-      },
-    ],
-  },
 ];

@@ -132,20 +132,6 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
   },
-  "use-local-storage": {
-    name: "use-local-storage",
-    type: "registry:hook",
-    registryDependencies: undefined,
-    files: [{
-      path: "src/registry/new-york-v4/hooks/use-local-storage.ts",
-      type: "registry:hook"
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/new-york-v4/hooks/use-local-storage.ts")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-  },
   "format-date": {
     name: "format-date",
     type: "registry:lib",
