@@ -163,7 +163,7 @@ export const Index: Record<string, any> = {
   "landing-page": {
     name: "landing-page",
     type: "registry:page",
-    registryDependencies: ["hero-section","card","button"],
+    registryDependencies: undefined,
     files: [{
       path: "src/registry/new-york-v4/pages/landing-page.tsx",
       type: "registry:page"

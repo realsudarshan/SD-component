@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/registry/new-york-v4/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/registry/new-york-v4/ui/card";
 import { HeroSection } from "@/registry/new-york-v4/blocks/hero-section";

@@ -40,7 +40,7 @@ export function RegistryList() {
               let href: string;
 
               if (isPage) {
-                href = `/preview/${item.name}`;
+                href = item.name === "landing-page" ? "/preview/landing-page" : `/preview/${item.name}`;
               } else if (type === "registry:ui" || type === "registry:component") {
                 href = `/docs/components/${item.name}`;
               } else if (type === "registry:block") {
