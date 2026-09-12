@@ -1,0 +1,114 @@
+---
+title: Project Card
+description: A card component designed for displaying project information with status badges and action buttons.
+---
+
+<ComponentPreview name="project-card-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+
+<CodeBlockCommand command="npx shadcn@latest add https://shadcn-registry-docs-template.pages.dev/r/project-card.json" />
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+<CodeBlockCommand command="npm install class-variance-authority" />
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="project-card"
+  title="components/project-card.tsx"
+  styleName="base-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+
+## Usage
+
+```tsx
+import { ProjectCard } from "@/components/project-card"
+```
+
+```tsx
+<ProjectCard
+  title="My Project"
+  description="Project description goes here"
+  status="active"
+  tags={["React", "TypeScript"]}
+  onViewDetails={() => console.log("View details")}
+  onEdit={() => console.log("Edit")}
+/>
+```
+
+## Reference
+
+### Props
+
+The `ProjectCard` component accepts the following props:
+
+<ApiRefTable
+  props={[
+    {
+      name: "title",
+      type: "string",
+      required: true,
+      description: "The project title",
+    },
+    {
+      name: "description",
+      type: "string",
+      required: true,
+      description: "The project description",
+    },
+    {
+      name: "status",
+      type: '"active" | "completed" | "archived"',
+      defaultValue: '"active"',
+      description: "The project status",
+    },
+    {
+      name: "tags",
+      type: "string[]",
+      defaultValue: "[]",
+      description: "Array of tag strings to display",
+    },
+    {
+      name: "onViewDetails",
+      type: "() => void",
+      description: "Callback when view details button is clicked",
+    },
+    {
+      name: "onEdit",
+      type: "() => void",
+      description: "Callback when edit button is clicked",
+    },
+    {
+      name: "variant",
+      type: '"default" | "compact"',
+      defaultValue: '"default"',
+      description: "Visual variant of the card",
+    },
+  ]}
+/>

@@ -1,4 +1,5 @@
 import type { Registry } from "shadcn/schema";
+import { components } from "./registry-components";
 import { examples } from "./registry-examples";
 import { ui } from "./registry-ui";
 
@@ -24,6 +25,7 @@ export const registry = {
       ...TEMPLATE_STYLE,
     },
     ...ui,
+    ...components,
     ...examples,
   ] satisfies Registry["items"],
 } satisfies Registry;

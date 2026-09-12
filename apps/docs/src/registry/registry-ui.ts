@@ -22,4 +22,14 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "badge",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/badge.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ];

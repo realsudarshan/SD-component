@@ -23,4 +23,15 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "project-card-demo",
+    type: "registry:example",
+    registryDependencies: ["project-card"],
+    files: [
+      {
+        path: "examples/project-card-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ];
