@@ -156,6 +156,24 @@
       ]
     },
     {
+      "name": "landing-page",
+      "type": "registry:page",
+      "title": "Landing Page",
+      "description": "A complete landing page template with hero, features, and footer sections",
+      "registryDependencies": [
+        "hero-section",
+        "card",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "src/registry/new-york-v4/pages/landing-page.tsx",
+          "type": "registry:page",
+          "target": "app/page.tsx"
+        }
+      ]
+    },
+    {
       "name": "button-demo",
       "type": "registry:example",
       "registryDependencies": [

@@ -160,6 +160,20 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
   },
+  "landing-page": {
+    name: "landing-page",
+    type: "registry:page",
+    registryDependencies: ["hero-section","card","button"],
+    files: [{
+      path: "src/registry/new-york-v4/pages/landing-page.tsx",
+      type: "registry:page"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/pages/landing-page.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
   "button-demo": {
     name: "button-demo",
     type: "registry:example",

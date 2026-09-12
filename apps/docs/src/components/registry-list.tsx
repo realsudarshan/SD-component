@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { registry } from "@/registry";
 
 const typeLabels: Record<string, string> = {
@@ -34,19 +35,41 @@ export function RegistryList() {
         <div key={type}>
           <h2 className="mb-4 text-2xl font-bold">{typeLabels[type] || type}</h2>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-            {items.map((item) => (
-              <div
-                key={item.name}
-                className="rounded-lg border p-4 hover:bg-muted/50 transition-colors"
-              >
-                <h3 className="font-semibold">{item.name}</h3>
-                {item.description && (
-                  <p className="mt-1 text-sm text-muted-foreground line-clamp-2">
-                    {item.description}
-                  </p>
-                )}
-              </div>
-            ))}
+            {items.map((item) => {
+              const isPage = type === "registry:page";
+              let href: string;
+
+              if (isPage) {
+                href = `/preview/${item.name}`;
+              } else if (type === "registry:ui" || type === "registry:component") {
+                href = `/docs/components/${item.name}`;
+              } else {
+                const category = type.replace("registry:", "");
+                href = `/docs/${category}/${item.name}`;
+              }
+
+              return (
+                <Link
+                  key={item.name}
+                  href={href}
+                  target={isPage ? "_blank" : undefined}
+                  rel={isPage ? "noopener noreferrer" : undefined}
+                  className="rounded-lg border p-4 hover:bg-muted/50 transition-colors"
+                >
+                  <h3 className="font-semibold">{item.name}</h3>
+                  {item.description && (
+                    <p className="mt-1 text-sm text-muted-foreground line-clamp-2">
+                      {item.description}
+                    </p>
+                  )}
+                  {isPage && (
+                    <span className="mt-2 inline-block text-xs text-primary">
+                      Opens in new tab →
+                    </span>
+                  )}
+                </Link>
+              );
+            })}
           </div>
         </div>
       ))}
