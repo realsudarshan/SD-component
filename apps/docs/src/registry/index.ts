@@ -1,5 +1,4 @@
 import type { Registry } from "shadcn/schema";
-import { bases } from "./registry-bases";
 import { blocks } from "./registry-blocks";
 import { components } from "./registry-components";
 import { examples } from "./registry-examples";
@@ -21,7 +20,7 @@ export const TEMPLATE_STYLE = {
 
 export const registry = {
   name: "shadcn-registry-docs-template/ui",
-  homepage: "https://shadcn-registry-docs-template.pages.dev/",
+  homepage: "https://components.sudarshandhakal.com.np/",
   items: [
     {
       name: "index",
@@ -38,7 +37,6 @@ export const registry = {
     ...libs,
     ...pages,
     ...files,
-    ...bases,
     ...fonts,
     ...examples,
   ] satisfies Registry["items"],

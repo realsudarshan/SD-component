@@ -1,11 +1,9 @@
 ---
-title: Hero Section
-description: A modern hero section with call-to-action buttons.
+title: Switch
+description: A turn on and off effect having switch ui premitive
 ---
 
-import { HeroSection } from "@/registry/new-york-v4/blocks/hero-section"
-
-<HeroSection />
+<ComponentPreview name="switch-demo" />
 
 ## Installation
 
@@ -17,7 +15,7 @@ import { HeroSection } from "@/registry/new-york-v4/blocks/hero-section"
 </TabsList>
 <TabsContent value="cli">
 
-<CodeBlockCommand command="npx shadcn@latest add https://components.sudarshandhakal.com.np/r/hero-section.json" />
+<CodeBlockCommand command="npx shadcn@latest add https://components.sudarshandhakal.com.np/r/switch.json" />
 
 </TabsContent>
 
@@ -25,11 +23,13 @@ import { HeroSection } from "@/registry/new-york-v4/blocks/hero-section"
 
 <Steps className="mb-0 pt-2">
 
+<Step>Run sync after implementation to detect package and registry dependencies.</Step>
+
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource
-  name="hero-section"
-  title="components/blocks/hero-section.tsx"
+  name="switch"
+  title="components/ui/switch.tsx"
   styleName="new-york-v4"
 />
 
@@ -44,9 +44,9 @@ import { HeroSection } from "@/registry/new-york-v4/blocks/hero-section"
 ## Usage
 
 ```tsx
-import { HeroSection } from "@/components/blocks/hero-section"
+import { Switch } from "@/components/ui/switch"
 ```
 
-```tsx
-<HeroSection />
-```
+## Reference
+
+Add props, examples, and notes here once the primitive is implemented.

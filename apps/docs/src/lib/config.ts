@@ -1,19 +1,13 @@
+import { getRegistryNavItems } from "@/lib/registry-types";
+
 export const siteConfig = {
-  name: "shadcn-regisry-docs-template",
-  url: "https://shadcn-registry-docs-template.pages.dev/",
-  description: "Build your next styled shadcn/ui components",
+  name: "Registry Docs Kit",
+  url: "https://components.sudarshandhakal.com.np/",
+  description:
+    "Ship a polished shadcn registry with docs, previews, and installable packages.",
   links: {
-    twitter: "https://twitter.com/0xMaqed",
-    github: "https://github.com/Maqed/shadcn-registry-docs-template",
+    twitter: "https://x.com/realsudarsan",
+    github: "https://github.com/realsudarshan/SD-component",
   },
-  navItems: [
-    {
-      href: "/docs",
-      label: "Docs",
-    },
-    {
-      href: "/docs/components",
-      label: "Components",
-    },
-  ],
+  navItems: getRegistryNavItems(),
 };

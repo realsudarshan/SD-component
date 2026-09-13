@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { ChevronDown, ChevronRight } from "lucide-react";
 import { getPagesFromFolder } from "@/lib/page-tree";
 import type { source } from "@/lib/source";
 import {
@@ -22,6 +24,14 @@ export function DocsSidebar({
   ...props
 }: React.ComponentProps<typeof Sidebar> & { tree: typeof source.pageTree }) {
   const pathname = usePathname();
+  const [collapsedFolders, setCollapsedFolders] = useState<Record<string, boolean>>({});
+
+  const toggleFolder = (folderId: string) => {
+    setCollapsedFolders((prev) => ({
+      ...prev,
+      [folderId]: !prev[folderId],
+    }));
+  };
 
   return (
     <Sidebar
@@ -30,13 +40,16 @@ export function DocsSidebar({
       {...props}
     >
       <SidebarContent className="mx-auto no-scrollbar w-(--sidebar-menu-width) overflow-x-hidden px-2 max-w-[280px]">
-        {tree.children.map((item) => {
+        {tree.children.map((item, index) => {
           const hasLink =
             item.type === "page" ||
             (item.type === "folder" && item.index && item.index.url);
+          const itemId = `folder-${index}`;
+          const isCollapsed = collapsedFolders[itemId];
+          const isFolder = item.type === "folder";
 
           return (
-            <SidebarGroup key={item.$id}>
+            <SidebarGroup key={itemId}>
               {hasLink ? (
                 <SidebarMenuButton
                   render={
@@ -52,10 +65,18 @@ export function DocsSidebar({
                   }
                 />
               ) : (
-                <SidebarGroupLabel><span className="truncate block">{item.name}</span></SidebarGroupLabel>
+                <button
+                  onClick={() => toggleFolder(itemId)}
+                  className="flex w-full items-center justify-between py-2 text-left hover:bg-muted/50 transition-colors rounded-md px-2"
+                >
+                  <span className="truncate font-medium">{item.name}</span>
+                  <span className="text-muted-foreground">
+                    {isCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                  </span>
+                </button>
               )}
               <SidebarGroupContent>
-                {item.type === "folder" && (
+                {isFolder && !isCollapsed && (
                   <SidebarMenu>
                     <SidebarMenuSub>
                       {getPagesFromFolder(item).map((page) => {

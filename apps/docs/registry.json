@@ -1,6 +1,6 @@
 {
   "name": "shadcn-registry-docs-template/ui",
-  "homepage": "https://shadcn-registry-docs-template.pages.dev/",
+  "homepage": "https://components.sudarshandhakal.com.np/",
   "items": [
     {
       "name": "index",
@@ -61,6 +61,21 @@
       "files": [
         {
           "path": "src/registry/new-york-v4/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "A turn on and off effect having switch ui premitive",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "src/registry/new-york-v4/ui/switch.tsx",
           "type": "registry:ui"
         }
       ]
@@ -169,6 +184,35 @@
       ]
     },
     {
+      "name": "tailwind-preset",
+      "type": "registry:file",
+      "title": "Tailwind Preset",
+      "description": "A shareable Tailwind preset file for registry consumers.",
+      "files": [
+        {
+          "path": "src/registry/new-york-v4/files/tailwind-preset.ts",
+          "type": "registry:file",
+          "target": "~/tailwind.preset.ts"
+        }
+      ]
+    },
+    {
+      "name": "font-inter",
+      "type": "registry:font",
+      "title": "Inter Font",
+      "description": "A sans-serif Google Font configured as the default font variable.",
+      "font": {
+        "family": "'Inter Variable', sans-serif",
+        "provider": "google",
+        "import": "Inter",
+        "variable": "--font-sans",
+        "subsets": [
+          "latin"
+        ],
+        "dependency": "@fontsource-variable/inter"
+      }
+    },
+    {
       "name": "button-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -204,6 +248,19 @@
       "files": [
         {
           "path": "src/registry/new-york-v4/examples/project-card-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "switch-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "switch"
+      ],
+      "files": [
+        {
+          "path": "src/registry/new-york-v4/examples/switch-demo.tsx",
           "type": "registry:example"
         }
       ]

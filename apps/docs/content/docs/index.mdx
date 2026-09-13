@@ -1,20 +1,299 @@
 ---
 title: Introduction
-description: Quickly start a shadcn registry with ready-to-use docs.
+description: Learn how to run, customize, publish, and consume this shadcn registry docs kit.
 ---
 
-This template helps you launch a **shadcn registry with documentation** in minutes.
+This project is a complete starting point for publishing a shadcn-compatible registry with documentation. It gives you a Next.js and Fumadocs site, generated registry JSON routes, install commands, component previews, source-code views, and a content structure that can grow with your design system.
 
-It combines a registry-ready project structure with a preconfigured docs app, so you can focus on building and publishing components instead of setting up boilerplate.
+Use it in two ways:
 
-## What You Get
+- As a registry author, customize the components, docs, and registry metadata for your own library.
+- As a registry consumer, install individual items from the `/r/*.json` endpoints with the shadcn CLI.
 
-- A starter setup for shipping components through a shadcn registry
-- A docs site to document usage, examples, and installation
-- A clean foundation you can extend with your own design system and content
+## Start the App
 
-## Next Steps
+Install dependencies from the repository root:
 
-- Update this docs content to match your registry and components
-- Add or edit component pages under `content/docs/components`
-- Start publishing your registry items and keep docs in sync
+```bash
+bun install
+```
+
+Run the docs app:
+
+```bash
+bun run dev
+```
+
+The docs app runs on port `4000` by default. Open:
+
+```txt
+http://localhost:4000
+```
+
+Build the app before publishing:
+
+```bash
+bun run build
+```
+
+## Project Layout
+
+Most day-to-day work happens in `apps/docs`.
+
+```txt
+apps/docs
+├── content/docs              # MDX documentation pages
+├── registry.json             # Generated registry output
+├── registry/__index__.tsx    # Generated preview/source index
+├── src/app                   # Next.js routes
+├── src/components            # Docs-site components
+├── src/lib                   # Registry helpers and site config
+└── src/registry/new-york-v4  # Source files published by the registry
+```
+
+The important split is:
+
+- `content/docs` explains each item to humans.
+- `src/registry` defines what the shadcn CLI can install.
+- `registry.json` and `registry/__index__.tsx` are generated output.
+
+## Install Registry Items
+
+Every documented item has a matching install command. The command points at a JSON endpoint under `/r`.
+
+```bash
+npx shadcn@latest add https://components.sudarshandhakal.com.np/r/button.json
+```
+
+For local development, use your local server URL:
+
+```bash
+npx shadcn@latest add http://localhost:4000/r/button.json
+```
+
+The command downloads the registry item, follows its registry dependencies, and writes the target files into the consuming app.
+
+## Registry Types
+
+This template is organized around common registry item types:
+
+- `registry:style` for shared style payloads.
+- `registry:ui` for reusable UI primitives like Button, Card, and Badge.
+- `registry:component` for composed app components.
+- `registry:block` for larger page sections.
+- `registry:hook` for React hooks.
+- `registry:lib` for utility functions.
+- `registry:page` for full page templates.
+- `registry:file` for standalone config or support files.
+- `registry:font` for font metadata.
+
+Each type has its own docs section and route, so users can browse by the shape of the thing they want to install.
+
+## Add a UI Component
+
+Create the component source file under:
+
+```txt
+apps/docs/src/registry/new-york-v4/ui
+```
+
+Then register it in `apps/docs/src/registry/registry-ui.ts`:
+
+```ts
+{
+  name: "alert",
+  type: "registry:ui",
+  dependencies: ["class-variance-authority"],
+  files: [
+    {
+      path: "ui/alert.tsx",
+      type: "registry:ui",
+    },
+  ],
+}
+```
+
+Add a matching docs page:
+
+```txt
+apps/docs/content/docs/ui/alert.mdx
+```
+
+A typical docs page includes:
+
+- Frontmatter with `title` and `description`.
+- A preview, when the item renders UI.
+- A Command tab for shadcn CLI installation.
+- A Manual tab with dependencies, source, and import-path notes.
+- Usage examples.
+- API notes for props, functions, or exported values.
+
+## Add a Composed Component
+
+Use `registry:component` when an item is built from smaller UI pieces.
+
+Put source files in:
+
+```txt
+apps/docs/src/registry/new-york-v4/components
+```
+
+Register dependencies by registry item name:
+
+```ts
+{
+  name: "project-card",
+  type: "registry:component",
+  registryDependencies: ["card", "badge", "button"],
+  files: [
+    {
+      path: "components/project-card.tsx",
+      type: "registry:component",
+    },
+  ],
+}
+```
+
+Registry dependencies let shadcn install the required local building blocks automatically.
+
+## Add Hooks, Libs, Files, Fonts, Blocks, or Pages
+
+Use the matching registry file for each category:
+
+```txt
+src/registry/registry-hooks.ts
+src/registry/registry-libs.ts
+src/registry/registry-files.ts
+src/registry/registry-fonts.ts
+src/registry/registry-blocks.ts
+src/registry/registry-pages.ts
+```
+
+Use matching docs folders:
+
+```txt
+content/docs/hooks
+content/docs/lib
+content/docs/files
+content/docs/fonts
+content/docs/blocks
+content/docs/pages
+```
+
+Keep the registry item name and MDX file name aligned. For example, `use-mobile` should have an install route at `/r/use-mobile.json` and a docs page at `/docs/hooks/use-mobile`.
+
+## Write Good Item Docs
+
+Use this structure for installable items:
+
+```mdx
+---
+title: Item Name
+description: A short sentence explaining what the item does.
+---
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+<CodeBlockCommand command="npx shadcn@latest add https://components.sudarshandhakal.com.np/r/item-name.json" />
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the required dependencies.</Step>
+
+<CodeBlockCommand command="npm install package-name" />
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="item-name" title="components/item-name.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { ItemName } from "@/components/item-name"
+```
+```
+
+The docs app provides reusable MDX components such as `CodeTabs`, `CodeBlockCommand`, `ComponentPreview`, `ComponentSource`, `RegistrySource`, `Steps`, `Step`, and `ApiRefTable`.
+
+## Rebuild Registry Output
+
+Whenever you edit registry definitions or registry source files, regenerate the registry output:
+
+```bash
+bun run --cwd apps/docs registry:build
+```
+
+The build script updates:
+
+```txt
+apps/docs/registry.json
+apps/docs/registry/__index__.tsx
+```
+
+The full production build also runs this step:
+
+```bash
+bun run --cwd apps/docs build
+```
+
+## Customize Site Metadata
+
+Edit `apps/docs/src/lib/config.ts` to update the site name, description, public URL, GitHub link, and top navigation.
+
+The top navigation is generated from registered registry item types, so adding a new type to the registry can automatically make its docs section visible when that type has a route mapping.
+
+## Publish the Site
+
+This app is configured for static export. After building, deploy the generated output with any static host that supports Next.js export output.
+
+Before deploying, update these values to your real production URL:
+
+- `apps/docs/src/lib/config.ts`
+- `apps/docs/src/registry/index.ts`
+- Any hard-coded install commands in `content/docs`
+
+Once deployed, users can install from your production registry endpoints:
+
+```bash
+npx shadcn@latest add https://your-site.com/r/button.json
+```
+
+## Troubleshooting
+
+If a docs page does not show up, run:
+
+```bash
+bun run --cwd apps/docs types:check
+```
+
+This regenerates the Fumadocs source and checks TypeScript.
+
+If an install command returns old data, rebuild the registry:
+
+```bash
+bun run --cwd apps/docs registry:build
+```
+
+If a manual source block is empty, confirm the item exists in `src/registry` and that the registered `files` path points to a real file under `src/registry/new-york-v4`.
+
+If imports look wrong after installation, check the rewrite logic in `apps/docs/src/lib/registry.ts` and the `target` values in the registry item files.

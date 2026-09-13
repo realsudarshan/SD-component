@@ -1,0 +1,68 @@
+---
+title: Badge
+description: Displays a compact label for status, category, or metadata.
+---
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+<CodeBlockCommand command="npx shadcn@latest add https://components.sudarshandhakal.com.np/r/badge.json" />
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+<CodeBlockCommand command="npm install class-variance-authority" />
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="badge"
+  title="components/ui/badge.tsx"
+  styleName="new-york-v4"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Badge } from "@/components/ui/badge"
+```
+
+```tsx
+<Badge>Active</Badge>
+```
+
+## Reference
+
+### Props
+
+The `Badge` component accepts all `HTMLDivElement` props plus the following:
+
+<ApiRefTable
+  props={[
+    {
+      name: "variant",
+      type: '"default" | "secondary" | "destructive" | "outline"',
+      defaultValue: '"default"',
+    },
+  ]}
+/>

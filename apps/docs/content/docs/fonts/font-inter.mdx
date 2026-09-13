@@ -1,0 +1,44 @@
+---
+title: Inter Font
+description: A sans-serif Google Font configured as the default font variable.
+---
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+<CodeBlockCommand command="npx shadcn@latest add https://components.sudarshandhakal.com.np/r/font-inter.json" />
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependency:</Step>
+
+<CodeBlockCommand command="npm install @fontsource-variable/inter" />
+
+<Step>Use the registry payload below to configure the font in your project.</Step>
+
+<RegistrySource name="font-inter" />
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Font
+
+`font-inter` configures `Inter` as `--font-sans` with the Google font provider.
+
+## Source
+
+<RegistrySource name="font-inter" />
