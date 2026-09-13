@@ -9,24 +9,49 @@ export const Index: Record<string, any> = {
   "index": {
     name: "index",
     type: "registry:style",
+    title: undefined,
+    description: undefined,
+    dependencies: ["class-variance-authority","lucide-react"],
+    devDependencies: ["tw-animate-css"],
     registryDependencies: ["utils"],
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: undefined,
     files: [],
     component: null,
   },
   "style": {
     name: "style",
     type: "registry:style",
+    title: undefined,
+    description: undefined,
+    dependencies: ["class-variance-authority","lucide-react"],
+    devDependencies: ["tw-animate-css"],
     registryDependencies: ["utils"],
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: undefined,
     files: [],
     component: null,
   },
   "button": {
     name: "button",
     type: "registry:ui",
+    title: undefined,
+    description: undefined,
+    dependencies: ["@base-ui/react"],
+    devDependencies: undefined,
     registryDependencies: undefined,
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: undefined,
     files: [{
       path: "src/registry/new-york-v4/ui/button.tsx",
-      type: "registry:ui"
+      type: "registry:ui",
+      target: undefined
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/ui/button.tsx")
@@ -37,10 +62,19 @@ export const Index: Record<string, any> = {
   "card": {
     name: "card",
     type: "registry:ui",
+    title: undefined,
+    description: undefined,
+    dependencies: undefined,
+    devDependencies: undefined,
     registryDependencies: undefined,
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: undefined,
     files: [{
       path: "src/registry/new-york-v4/ui/card.tsx",
-      type: "registry:ui"
+      type: "registry:ui",
+      target: undefined
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/ui/card.tsx")
@@ -51,10 +85,19 @@ export const Index: Record<string, any> = {
   "badge": {
     name: "badge",
     type: "registry:ui",
+    title: undefined,
+    description: undefined,
+    dependencies: undefined,
+    devDependencies: undefined,
     registryDependencies: undefined,
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: undefined,
     files: [{
       path: "src/registry/new-york-v4/ui/badge.tsx",
-      type: "registry:ui"
+      type: "registry:ui",
+      target: undefined
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/ui/badge.tsx")
@@ -62,13 +105,45 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
   },
+  "switch": {
+    name: "switch",
+    type: "registry:ui",
+    title: "Switch",
+    description: "A turn on and off effect having switch ui premitive",
+    dependencies: ["@base-ui/react"],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: undefined,
+    files: [{
+      path: "src/registry/new-york-v4/ui/switch.tsx",
+      type: "registry:ui",
+      target: undefined
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/ui/switch.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
   "project-card": {
     name: "project-card",
     type: "registry:component",
+    title: undefined,
+    description: undefined,
+    dependencies: undefined,
+    devDependencies: undefined,
     registryDependencies: ["card","badge","button"],
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: undefined,
     files: [{
       path: "src/registry/new-york-v4/components/project-card.tsx",
-      type: "registry:component"
+      type: "registry:component",
+      target: undefined
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/components/project-card.tsx")
@@ -79,10 +154,19 @@ export const Index: Record<string, any> = {
   "hero-section": {
     name: "hero-section",
     type: "registry:block",
+    title: "Hero Section",
+    description: "A modern hero section with call-to-action buttons",
+    dependencies: undefined,
+    devDependencies: undefined,
     registryDependencies: ["button"],
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: undefined,
     files: [{
       path: "src/registry/new-york-v4/blocks/hero-section.tsx",
-      type: "registry:component"
+      type: "registry:component",
+      target: undefined
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/blocks/hero-section.tsx")
@@ -93,10 +177,19 @@ export const Index: Record<string, any> = {
   "use-mobile": {
     name: "use-mobile",
     type: "registry:hook",
+    title: "Use Mobile",
+    description: "A hook for detecting mobile screen size",
+    dependencies: undefined,
+    devDependencies: undefined,
     registryDependencies: undefined,
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: undefined,
     files: [{
       path: "src/registry/new-york-v4/hooks/use-mobile.ts",
-      type: "registry:hook"
+      type: "registry:hook",
+      target: undefined
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/hooks/use-mobile.ts")
@@ -107,10 +200,19 @@ export const Index: Record<string, any> = {
   "use-toggle": {
     name: "use-toggle",
     type: "registry:hook",
+    title: "Use Toggle",
+    description: "A hook for managing boolean toggle state",
+    dependencies: undefined,
+    devDependencies: undefined,
     registryDependencies: undefined,
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: undefined,
     files: [{
       path: "src/registry/new-york-v4/hooks/use-toggle.ts",
-      type: "registry:hook"
+      type: "registry:hook",
+      target: undefined
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/hooks/use-toggle.ts")
@@ -121,10 +223,19 @@ export const Index: Record<string, any> = {
   "use-media-query": {
     name: "use-media-query",
     type: "registry:hook",
+    title: "Use Media Query",
+    description: "A hook for responsive media queries",
+    dependencies: undefined,
+    devDependencies: undefined,
     registryDependencies: undefined,
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: undefined,
     files: [{
       path: "src/registry/new-york-v4/hooks/use-media-query.ts",
-      type: "registry:hook"
+      type: "registry:hook",
+      target: undefined
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/hooks/use-media-query.ts")
@@ -135,10 +246,19 @@ export const Index: Record<string, any> = {
   "format-date": {
     name: "format-date",
     type: "registry:lib",
+    title: "Format Date",
+    description: "Utility functions for date formatting",
+    dependencies: undefined,
+    devDependencies: undefined,
     registryDependencies: undefined,
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: undefined,
     files: [{
       path: "src/registry/new-york-v4/lib/format-date.ts",
-      type: "registry:lib"
+      type: "registry:lib",
+      target: undefined
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/lib/format-date.ts")
@@ -149,10 +269,19 @@ export const Index: Record<string, any> = {
   "validate-email": {
     name: "validate-email",
     type: "registry:lib",
+    title: "Validate Email",
+    description: "Email validation utility function",
+    dependencies: undefined,
+    devDependencies: undefined,
     registryDependencies: undefined,
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: undefined,
     files: [{
       path: "src/registry/new-york-v4/lib/validate-email.ts",
-      type: "registry:lib"
+      type: "registry:lib",
+      target: undefined
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/lib/validate-email.ts")
@@ -163,10 +292,19 @@ export const Index: Record<string, any> = {
   "landing-page": {
     name: "landing-page",
     type: "registry:page",
+    title: "Landing Page",
+    description: "A complete landing page template with hero, features, and footer sections",
+    dependencies: undefined,
+    devDependencies: undefined,
     registryDependencies: undefined,
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: undefined,
     files: [{
       path: "src/registry/new-york-v4/pages/landing-page.tsx",
-      type: "registry:page"
+      type: "registry:page",
+      target: "app/page.tsx"
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/pages/landing-page.tsx")
@@ -174,13 +312,60 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
   },
+  "tailwind-preset": {
+    name: "tailwind-preset",
+    type: "registry:file",
+    title: "Tailwind Preset",
+    description: "A shareable Tailwind preset file for registry consumers.",
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: undefined,
+    files: [{
+      path: "src/registry/new-york-v4/files/tailwind-preset.ts",
+      type: "registry:file",
+      target: "~/tailwind.preset.ts"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/files/tailwind-preset.ts")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "font-inter": {
+    name: "font-inter",
+    type: "registry:font",
+    title: "Inter Font",
+    description: "A sans-serif Google Font configured as the default font variable.",
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: {"family":"'Inter Variable', sans-serif","provider":"google","import":"Inter","variable":"--font-sans","subsets":["latin"],"dependency":"@fontsource-variable/inter"},
+    files: [],
+    component: null,
+  },
   "button-demo": {
     name: "button-demo",
     type: "registry:example",
+    title: undefined,
+    description: undefined,
+    dependencies: undefined,
+    devDependencies: undefined,
     registryDependencies: ["button"],
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: undefined,
     files: [{
       path: "src/registry/new-york-v4/examples/button-demo.tsx",
-      type: "registry:example"
+      type: "registry:example",
+      target: undefined
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/examples/button-demo.tsx")
@@ -191,10 +376,19 @@ export const Index: Record<string, any> = {
   "card-demo": {
     name: "card-demo",
     type: "registry:example",
+    title: undefined,
+    description: undefined,
+    dependencies: undefined,
+    devDependencies: undefined,
     registryDependencies: ["card","button"],
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: undefined,
     files: [{
       path: "src/registry/new-york-v4/examples/card-demo.tsx",
-      type: "registry:example"
+      type: "registry:example",
+      target: undefined
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/examples/card-demo.tsx")
@@ -205,13 +399,45 @@ export const Index: Record<string, any> = {
   "project-card-demo": {
     name: "project-card-demo",
     type: "registry:example",
+    title: undefined,
+    description: undefined,
+    dependencies: undefined,
+    devDependencies: undefined,
     registryDependencies: ["project-card"],
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: undefined,
     files: [{
       path: "src/registry/new-york-v4/examples/project-card-demo.tsx",
-      type: "registry:example"
+      type: "registry:example",
+      target: undefined
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/examples/project-card-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "switch-demo": {
+    name: "switch-demo",
+    type: "registry:example",
+    title: undefined,
+    description: undefined,
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ["switch"],
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: undefined,
+    files: [{
+      path: "src/registry/new-york-v4/examples/switch-demo.tsx",
+      type: "registry:example",
+      target: undefined
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/switch-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

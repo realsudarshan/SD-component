@@ -3,8 +3,12 @@ import { getPagesFromFolder } from "@/lib/page-tree";
 import { source } from "@/lib/source";
 
 export function ComponentsList() {
+  return <DocsFolderList folderId="components" />;
+}
+
+export function DocsFolderList({ folderId }: { folderId: string }) {
   const componentsFolder = source.pageTree.children.find(
-    (page) => page.$id === "components",
+    (page) => page.$id === folderId,
   );
 
   if (componentsFolder?.type !== "folder") {

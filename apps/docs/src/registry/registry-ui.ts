@@ -32,4 +32,17 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "switch",
+    type: "registry:ui",
+    title: "Switch",
+    description: "A turn on and off effect having switch ui premitive",
+    dependencies: ["@base-ui/react"],
+    files: [
+      {
+        path: "ui/switch.tsx",
+        type: "registry:ui",
+      },
+    ],
+  }
 ];

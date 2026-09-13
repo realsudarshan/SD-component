@@ -10,7 +10,10 @@
     "postinstall": "fumadocs-mdx",
     "lint": "biome check",
     "format": "biome format --write",
-    "registry:build": "bun ./src/scripts/build-registry.mts"
+    "registry:build": "bun ./src/scripts/build-registry.mts",
+    "primitive:add": "bun ./src/scripts/add-primitive.mts",
+    "primitive:sync": "bun ./src/scripts/sync-primitive.mts",
+    "add": "bun ./src/scripts/add-primitive.mts"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

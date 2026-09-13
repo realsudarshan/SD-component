@@ -19,7 +19,7 @@ export function getAllPagesFromFolder(folder: PageTreeFolder): PageTreePage[] {
   return pages;
 }
 
-// Get all pages from a folder (flattened, no base/radix distinction).
+// Get all pages from a folder.
 export function getPagesFromFolder(folder: PageTreeFolder): PageTreePage[] {
   return getAllPagesFromFolder(folder).filter(
     (page) => !page.url.endsWith("/components"),

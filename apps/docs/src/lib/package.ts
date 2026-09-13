@@ -1,4 +1,4 @@
-import { ui } from "@/registry/registry-ui";
+import { registry } from "@/registry";
 import { getRegistryItem } from "./registry";
 
 export async function getPackage(name: string) {
@@ -12,5 +12,5 @@ export async function getPackage(name: string) {
 }
 
 export async function getAllPackageNames(): Promise<string[]> {
-  return ui.map((item) => item.name);
+  return registry.items.map((item) => item.name);
 }

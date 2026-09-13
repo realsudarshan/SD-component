@@ -12,6 +12,10 @@
 		"deps": "bunx taze@latest -rw",
 		"check-types": "turbo check-types",
 		"check": "biome check --write .",
+		"registry:build": "bun --cwd apps/docs ./src/scripts/build-registry.mts",
+		"primitive:add": "bun --cwd apps/docs ./src/scripts/add-primitive.mts",
+		"primitive:sync": "bun --cwd apps/docs ./src/scripts/sync-primitive.mts",
+		"add": "bun --cwd apps/docs ./src/scripts/add-primitive.mts",
 		"prepare": "husky || true"
 	},
 	"dependencies": {

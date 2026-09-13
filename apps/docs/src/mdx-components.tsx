@@ -5,7 +5,9 @@ import { CodeBlockCommand } from "@/components/code-block-command";
 import { CodeTabs } from "@/components/code-tabs";
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
-import { ComponentsList } from "@/components/components-list";
+import { ComponentsList, DocsFolderList } from "@/components/components-list";
+import { RegistryList } from "@/components/registry-list";
+import { RegistrySource } from "@/components/registry-source";
 import {
   Tabs,
   TabsContent,
@@ -20,6 +22,9 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     ...defaultMdxComponents,
     ...components,
     ComponentsList,
+    DocsFolderList,
+    RegistryList,
+    RegistrySource,
     ComponentPreview,
     ComponentSource,
     ComponentPreviewTabs,

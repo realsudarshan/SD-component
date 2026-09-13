@@ -19,7 +19,7 @@ export async function getRegistryItem(name: string) {
 
   // Convert all file paths to object.
   // TODO: remove when we migrate to new registry.
-  item.files = item.files.map((file: unknown) =>
+  item.files = item.files?.map((file: unknown) =>
     typeof file === "string" ? { path: file } : file,
   );
 
@@ -30,10 +30,10 @@ export async function getRegistryItem(name: string) {
   }
 
   // Build path mappings from all files for import rewriting
-  const pathMappings = buildPathMappings(item.files);
+  const pathMappings = buildPathMappings(item.files ?? []);
 
   let files: typeof result.data.files = [];
-  for (const file of item.files) {
+  for (const file of item.files ?? []) {
     const content = await getFileContent(file, pathMappings);
     const relativePath = path.relative(process.cwd(), file.path);
 
@@ -86,6 +86,10 @@ async function getFileContent(
 ) {
   const raw = await fs.readFile(file.path, "utf-8");
 
+  if (file.type === "registry:file") {
+    return raw;
+  }
+
   const project = new Project({
     compilerOptions: {},
   });
@@ -123,6 +127,10 @@ async function createTempSourceFile(filename: string) {
 function fixFilePaths(files: RegistryItem["files"]) {
   if (!files) {
     return [];
+  }
+
+  if (files.length === 0) {
+    return files;
   }
 
   // Resolve all paths relative to the first file's directory.
