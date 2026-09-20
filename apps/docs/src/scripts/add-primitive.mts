@@ -1,7 +1,6 @@
 import { spawn } from "node:child_process";
 import path from "node:path";
-import { stdin as input, stdout as output } from "node:process";
-import readline from "node:readline/promises";
+import { intro, note, outro } from "@clack/prompts";
 import {
   boolFromFlag,
   docsAbsolutePath,
@@ -28,67 +27,61 @@ import {
 
 async function collectAnswers() {
   const { flags } = parseArgs();
-  const rl = readline.createInterface({ input, output });
+  intro(`Add Primitive`);
 
-  try {
-    const rawType = String(flags.get("type") ?? "");
-    const type = rawType
-      ? isPrimitiveType(rawType)
-        ? rawType
-        : (() => {
-            throw new Error(`Unknown primitive type "${rawType}".`);
-          })()
-      : await promptType("ui", rl);
-    const rawName =
-      typeof flags.get("name") === "string"
-        ? String(flags.get("name"))
-        : await promptText("Name", "example-card", rl);
-    const name = slugify(rawName);
-    const title =
-      typeof flags.get("title") === "string"
-        ? String(flags.get("title"))
-        : await promptText("Title", titleize(name), rl);
-    const description =
-      typeof flags.get("description") === "string"
-        ? String(flags.get("description"))
-        : await promptText(
-            "Description",
-            `A reusable ${name} ${type} primitive.`,
-            rl,
-          );
-    const canDemo = supportsDemo(type);
-    const answers: PrimitiveAnswers = {
-      description,
-      docs: boolFromFlag(flags, "docs", true),
-      force: boolFromFlag(flags, "force", false),
-      name,
-      runBuild: boolFromFlag(flags, "build", false),
-      demo: canDemo && boolFromFlag(flags, "demo", canDemo),
-      sync: boolFromFlag(flags, "sync", false),
-      title,
-      type,
-    };
+  const rawType = String(flags.get("type") ?? "");
+  const type = rawType
+    ? isPrimitiveType(rawType)
+      ? rawType
+      : (() => {
+          throw new Error(`Unknown primitive type "${rawType}".`);
+        })()
+    : await promptType("ui");
+  const rawName =
+    typeof flags.get("name") === "string"
+      ? String(flags.get("name"))
+      : await promptText("Name", "example-card");
+  const name = slugify(rawName);
+  const title =
+    typeof flags.get("title") === "string"
+      ? String(flags.get("title"))
+      : await promptText("Title", titleize(name));
+  const description =
+    typeof flags.get("description") === "string"
+      ? String(flags.get("description"))
+      : await promptText(
+          "Description",
+          `A reusable ${name} ${type} primitive.`,
+        );
+  const canDemo = supportsDemo(type);
+  const answers: PrimitiveAnswers = {
+    description,
+    docs: boolFromFlag(flags, "docs", true),
+    force: boolFromFlag(flags, "force", false),
+    name,
+    runBuild: boolFromFlag(flags, "build", false),
+    demo: canDemo && boolFromFlag(flags, "demo", canDemo),
+    sync: boolFromFlag(flags, "sync", false),
+    title,
+    type,
+  };
 
-    if (!flags.has("docs")) {
-      answers.docs = await promptConfirm("Create docs page", answers.docs, rl);
-    }
-
-    if (canDemo && !flags.has("demo")) {
-      answers.demo = await promptConfirm("Create demo", answers.demo, rl);
-    }
-
-    if (!flags.has("build")) {
-      answers.runBuild = await promptConfirm(
-        "Run registry build after scaffold",
-        answers.runBuild,
-        rl,
-      );
-    }
-
-    return answers;
-  } finally {
-    rl.close();
+  if (!flags.has("docs")) {
+    answers.docs = await promptConfirm("Create docs page", answers.docs);
   }
+
+  if (canDemo && !flags.has("demo")) {
+    answers.demo = await promptConfirm("Create demo", answers.demo);
+  }
+
+  if (!flags.has("build")) {
+    answers.runBuild = await promptConfirm(
+      "Run registry build after scaffold",
+      answers.runBuild,
+    );
+  }
+
+  return answers;
 }
 
 async function run(command: string, args: string[]) {
@@ -199,22 +192,20 @@ async function main() {
     await run("bun", ["run", "registry:build"]);
   }
 
-  output.write(`\nCreated ${answers.name}\n`);
+  note(`Created ${answers.name}`);
 
   if (created.length) {
-    output.write(
-      `\nFiles:\n${created.map((file) => `- ${file}`).join("\n")}\n`,
-    );
+    note(`Files:\n${created.map((file) => `- ${file}`).join("\n")}`);
   }
 
   if (skipped.length) {
-    output.write(
-      `\nSkipped existing files:\n${skipped.map((file) => `- ${file}`).join("\n")}\n`,
+    note(
+      `Skipped existing files:\n${skipped.map((file) => `- ${file}`).join("\n")}`,
     );
   }
 
-  output.write(
-    `\nNext:\n- Implement the generated source file\n- Run bun run primitive:sync ${answers.name}\n- Run bun run registry:build\n`,
+  outro(
+    `Next:\n- Implement the generated source file\n- Run bun run primitive:sync ${answers.name}\n- Run bun run registry:build`,
   );
 }
 

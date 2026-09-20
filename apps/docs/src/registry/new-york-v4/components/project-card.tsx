@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import type * as React from "react";
 
 import { cn } from "@/lib/utils";
 import { Badge } from "@/registry/new-york-v4/ui/badge";
@@ -56,7 +56,10 @@ function ProjectCard({
   ...props
 }: ProjectCardProps) {
   return (
-    <Card className={cn(projectCardVariants({ variant }), className)} {...props}>
+    <Card
+      className={cn(projectCardVariants({ variant }), className)}
+      {...props}
+    >
       <CardHeader>
         <div className="flex items-start justify-between">
           <CardTitle className="text-lg">{title}</CardTitle>

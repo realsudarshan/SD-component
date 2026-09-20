@@ -44,5 +44,19 @@ export const ui: Registry["items"] = [
         type: "registry:ui",
       },
     ],
-  }
+  },
+  {
+    name: "accordion",
+    type: "registry:ui",
+    title: "Accordion-ui",
+    description:
+      "A vertically stacked set of interactive headings that each reveal a section of content.",
+    dependencies: ["@base-ui/react", "lucide-react"],
+    files: [
+      {
+        path: "ui/accordion.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ];

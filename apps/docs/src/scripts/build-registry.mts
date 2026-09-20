@@ -31,17 +31,19 @@ export const Index: Record<string, any> = {`;
     css: ${JSON.stringify(item.css)},
     config: ${JSON.stringify(itemRecord.config)},
     font: ${JSON.stringify(itemRecord.font)},
-    files: [${item.files?.map((file) => {
-      const filePath = `src/registry/new-york-v4/${typeof file === "string" ? file : file.path}`;
-      const resolvedFilePath = path.resolve(filePath);
-      return typeof file === "string"
-        ? `"${resolvedFilePath}"`
-        : `{
+    files: [${
+      item.files?.map((file) => {
+        const filePath = `src/registry/new-york-v4/${typeof file === "string" ? file : file.path}`;
+        const resolvedFilePath = path.resolve(filePath);
+        return typeof file === "string"
+          ? `"${resolvedFilePath}"`
+          : `{
       path: "${filePath}",
       type: "${file.type}",
       target: ${JSON.stringify(file.target)}
     }`;
-    }) ?? []}],
+      }) ?? []
+    }],
     component: ${
       componentPath
         ? `React.lazy(async () => {

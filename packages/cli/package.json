@@ -1,0 +1,25 @@
+{
+	"name": "@shadcn-registry-docs-template/cli",
+	"version": "1.0.0",
+	"description": "Global CLI to push components easily into the registry repo",
+	"main": "dist/index.js",
+	"type": "module",
+	"bin": {
+		"registry-cli": "dist/index.js"
+	},
+	"scripts": {
+		"dev": "tsup src/index.ts --format esm --watch",
+		"build": "tsup src/index.ts --format esm"
+	},
+	"dependencies": {
+		"@clack/prompts": "^1.8.1",
+		"commander": "^15.0.0",
+		"fs-extra": "^11.4.0",
+		"picocolors": "^1.1.1"
+	},
+	"devDependencies": {
+		"@types/fs-extra": "^11.0.4",
+		"tsup": "^8.5.1",
+		"typescript": "^7.0.2"
+	}
+}

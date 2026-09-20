@@ -44,5 +44,16 @@ export const examples: Registry["items"] = [
         type: "registry:example",
       },
     ],
-  }
+  },
+  {
+    name: "accordion-demo",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "examples/accordion-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ];

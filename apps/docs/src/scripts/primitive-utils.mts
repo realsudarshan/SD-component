@@ -1,8 +1,6 @@
 import { existsSync } from "node:fs";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { stdout as output } from "node:process";
-import type readline from "node:readline/promises";
 import { IndentationText, Project, SyntaxKind } from "ts-morph";
 
 export const primitiveTypes = [
@@ -245,58 +243,54 @@ export function isPrimitiveType(value: string): value is PrimitiveType {
   return primitiveTypes.includes(value as PrimitiveType);
 }
 
-export async function promptText(
-  label: string,
-  defaultValue: string,
-  rl: readline.Interface,
-) {
-  const suffix = defaultValue ? ` (${defaultValue})` : "";
-  const answer = await rl.question(`${label}${suffix}: `);
-  return answer.trim() || defaultValue;
-}
-
-export async function promptConfirm(
-  label: string,
-  defaultValue: boolean,
-  rl: readline.Interface,
-) {
-  const hint = defaultValue ? "Y/n" : "y/N";
-  const answer = (await rl.question(`${label} (${hint}): `))
-    .trim()
-    .toLowerCase();
-
-  if (!answer) {
-    return defaultValue;
-  }
-
-  return ["y", "yes", "true", "1"].includes(answer);
-}
-
-export async function promptType(
-  defaultValue: PrimitiveType,
-  rl: readline.Interface,
-) {
-  output.write(`What are you adding?\n`);
-  primitiveTypes.forEach((type, index) => {
-    output.write(
-      `  ${index + 1}. ${type}${type === defaultValue ? " (default)" : ""}\n`,
-    );
+export async function promptText(label: string, defaultValue: string) {
+  const { text, isCancel, cancel } = await import("@clack/prompts");
+  const answer = await text({
+    message: label,
+    placeholder: defaultValue,
+    defaultValue,
   });
 
-  const answer = (await rl.question(`Choose type: `)).trim();
-
-  if (!answer) {
-    return defaultValue;
+  if (isCancel(answer)) {
+    cancel("Operation cancelled.");
+    process.exit(0);
   }
 
-  const index = Number(answer);
-  const selected = Number.isInteger(index) ? primitiveTypes[index - 1] : answer;
+  return (answer as string).trim() || defaultValue;
+}
 
-  if (!selected || !isPrimitiveType(selected)) {
-    throw new Error(`Unknown primitive type "${answer}".`);
+export async function promptConfirm(label: string, defaultValue: boolean) {
+  const { confirm, isCancel, cancel } = await import("@clack/prompts");
+  const answer = await confirm({
+    message: label,
+    initialValue: defaultValue,
+  });
+
+  if (isCancel(answer)) {
+    cancel("Operation cancelled.");
+    process.exit(0);
   }
 
-  return selected;
+  return answer as boolean;
+}
+
+export async function promptType(defaultValue: PrimitiveType) {
+  const { select, isCancel, cancel } = await import("@clack/prompts");
+  const answer = await select({
+    message: "What are you adding?",
+    initialValue: defaultValue,
+    options: primitiveTypes.map((type) => ({
+      value: type,
+      label: type,
+    })),
+  });
+
+  if (isCancel(answer)) {
+    cancel("Operation cancelled.");
+    process.exit(0);
+  }
+
+  return answer as PrimitiveType;
 }
 
 export async function writeFileIfAllowed(

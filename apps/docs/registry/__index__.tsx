@@ -128,6 +128,29 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
   },
+  "accordion": {
+    name: "accordion",
+    type: "registry:ui",
+    title: "Accordion-ui",
+    description: "A vertically stacked set of interactive headings that each reveal a section of content.",
+    dependencies: ["@base-ui/react","lucide-react"],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: undefined,
+    files: [{
+      path: "src/registry/new-york-v4/ui/accordion.tsx",
+      type: "registry:ui",
+      target: undefined
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/ui/accordion.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
   "project-card": {
     name: "project-card",
     type: "registry:component",
@@ -438,6 +461,29 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/examples/switch-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "accordion-demo": {
+    name: "accordion-demo",
+    type: "registry:example",
+    title: undefined,
+    description: undefined,
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ["accordion"],
+    cssVars: undefined,
+    css: undefined,
+    config: undefined,
+    font: undefined,
+    files: [{
+      path: "src/registry/new-york-v4/examples/accordion-demo.tsx",
+      type: "registry:example",
+      target: undefined
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/accordion-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

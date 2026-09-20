@@ -1,8 +1,7 @@
 import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { stdin as input, stdout as output } from "node:process";
-import readline from "node:readline/promises";
+import { intro, note, outro } from "@clack/prompts";
 import {
   boolFromFlag,
   docsRoot,
@@ -159,34 +158,25 @@ async function main() {
   );
   const shouldConfirm = boolFromFlag(flags, "confirm", true);
 
-  output.write(`\nDetected for ${name}:\n`);
-  output.write(
-    `Package dependencies: ${dependencies.length ? dependencies.join(", ") : "none"}\n`,
-  );
-  output.write(
-    `Registry dependencies: ${
-      registryDependencies.length ? registryDependencies.join(", ") : "none"
-    }\n`,
-  );
+  intro(`Sync Primitive`);
 
-  if (supportsDemo(type) && existsSync(demoPath)) {
-    output.write(
-      `Demo registry dependencies: ${demoRegistryDependencies.join(", ")}\n`,
-    );
-  }
+  note(
+    `Detected for ${name}:\n` +
+      `Package dependencies: ${dependencies.length ? dependencies.join(", ") : "none"}\n` +
+      `Registry dependencies: ${
+        registryDependencies.length ? registryDependencies.join(", ") : "none"
+      }` +
+      (supportsDemo(type) && existsSync(demoPath)
+        ? `\nDemo registry dependencies: ${demoRegistryDependencies.join(", ")}`
+        : ""),
+  );
 
   if (shouldConfirm) {
-    const rl = readline.createInterface({ input, output });
+    const confirmed = await promptConfirm("Update registry files", true);
 
-    try {
-      const confirmed = await promptConfirm("Update registry files", true, rl);
-
-      if (!confirmed) {
-        output.write("No files changed.\n");
-        return;
-      }
-    } finally {
-      rl.close();
+    if (!confirmed) {
+      outro("No files changed.");
+      return;
     }
   }
 
@@ -222,8 +212,8 @@ async function main() {
     });
   }
 
-  output.write(
-    `\nSynced ${path.relative(docsRoot(), sourcePath)} into ${config.registryFile}.\n`,
+  outro(
+    `Synced ${path.relative(docsRoot(), sourcePath)} into ${config.registryFile}.`,
   );
 }
 
