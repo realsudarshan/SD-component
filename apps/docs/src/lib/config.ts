@@ -1,10 +1,10 @@
 import { getRegistryNavItems } from "@/lib/registry-types";
 
 export const siteConfig = {
-  name: "Registry Docs Kit",
+  name: "Your UI Library",
   url: "https://components.sudarshandhakal.com.np/",
   description:
-    "Ship a polished shadcn registry with docs, previews, and installable packages.",
+    "Build, host, and share your own shadcn-compatible component library in minutes. AI-ready, easily hosted, and zero-friction.",
   links: {
     twitter: "https://x.com/realsudarsan",
     github: "https://github.com/realsudarshan/SD-component",

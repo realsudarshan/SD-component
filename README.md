@@ -1,98 +1,100 @@
-# shadcn-registry-docs-template
+<div align="center">
+  <h1>✨ The Ultimate Component Registry Template</h1>
+  <p><strong>Build, host, and share your own shadcn-compatible component library in minutes.</strong></p>
+  <p>Zero friction. AI-ready. Deploy anywhere.</p>
+</div>
 
-Minimal template for building shadcn registry with docs
+---
 
-## Features
+## 🌟 Why this template?
 
-- **TypeScript** - For type safety and improved developer experience
-- **Biome** - Linting and formatting
-- **Husky** - Git hooks for code quality
-- **Turborepo** - Optimized monorepo build system
+We believe that **everyone** should be able to spin up and host their own component library in minutes without the headache of manual AST parsing, documentation boilerplate, and configuration setup. 
 
-## Getting Started
+This template is built to eliminate friction across the entire component lifecycle:
 
-First, install the dependencies:
+- 🤖 **AI-Ready (Built for LLMs):** Ships with an AI Workspace Skill (`.antigravity/skills`). Just ask your AI coding assistant (Gemini, Claude, Antigravity) to *"create a component"* and it will autonomously scaffold, implement, sync dependencies, and document it.
+- 🚀 **Zero-Friction Publishing:** Working on a component inside your actual Next.js app? Use our [Global CLI](#cross-repo-development-global-cli) to push it directly to your registry from *any local repository* with a single command.
+- 🌍 **Use Anywhere:** Fully compatible with the standard `npx shadcn@latest add ...` CLI out of the box. Consumers can use your components instantly.
+- ⚡ **Easily Hosted:** Powered by Next.js and Fumadocs. Static export is built-in. Deploy to Vercel, Netlify, or GitHub Pages in seconds.
 
+---
+
+## 📦 Getting Started
+
+### 1. Clone & Install
 ```bash
+git clone https://github.com/realsudarshan/SD-component.git my-ui-library
+cd my-ui-library
 bun install
 ```
 
-Then, run the development server:
-
+### 2. Start the Dev Server
 ```bash
 bun run dev
 ```
 
-## Git Hooks and Formatting
+### 3. Customize Your Brand
+- Edit `apps/docs/src/lib/config.ts` to update your site name, URLs, and social links.
+- Update `apps/docs/registry.json` and `apps/docs/src/registry/index.ts` to reflect your author name and URL.
 
-- Initialize hooks: `bun run prepare`
-- Format and lint fix: `bun run check`
+---
 
-## Project Structure
+## 🛠 Available Scripts
+
+- `bun run add`: Beautiful, interactive CLI to scaffold a new registry component, block, or hook.
+- `bun run primitive:sync <name>`: Automatically parses the AST of your component and resolves all dependencies.
+- `bun run registry:build`: Rebuilds the static JSON registry endpoints.
+- `bun run dev`: Start development server.
+- `bun run build`: Build for production.
+
+---
+
+## 🪄 AI Assistant Integration (Zero-Touch Components)
+
+This repository is designed to be fully manageable by LLMs. It includes an **AI Workspace Skill** (`.antigravity/skills/create-registry-component/SKILL.md`). 
+
+If you use an AI coding assistant, simply prompt:
+> *"Create a new UI component called glowing-button."*
+
+**The AI will autonomously:**
+1. Scaffold it via `bun run add --name glowing-button --type ui`.
+2. Write the component logic and its visual demo.
+3. Sync dependencies using `bun run primitive:sync`.
+4. Fill in the MDX documentation automatically.
+5. Rebuild the `registry.json`.
+
+---
+
+## 🚚 Cross-Repo Development (Global CLI)
+
+We know you don't build components in a vacuum. You build them in your real-world applications and *then* decide they belong in your UI library.
+
+We built a **Global CLI** so you can push a component from *any* local Next.js/React project directly into this registry without copy-pasting.
+
+### Link the CLI
+```bash
+cd packages/cli
+bun link
+```
+
+### Push from any project
+Go to your separate app's codebase and push your newly created component:
+```bash
+registry-cli push src/components/ui/magic-card.tsx --type ui
+```
+The CLI will copy the file, resolve your registry directory, and trigger the `primitive:sync` AST parser so your component is completely wired up.
+
+---
+
+## 📂 Project Structure
 
 ```
 shadcn-registry-docs-template/
 ├── .antigravity/
-│   └── skills/        # AI Workspace Skills (e.g., component scaffolding instructions)
+│   └── skills/        # Tells AI exactly how to write & sync components
 ├── apps/
 │   └── docs/          # Next.js + Fumadocs app with the registry UI
 └── packages/
     ├── config/        # Shared TypeScript / tooling config
-    └── cli/           # Global CLI tool for cross-repo syncing
+    └── cli/           # Global CLI tool for pushing components
 ```
-
-## Available Scripts
-
-- `bun run dev`: Start all applications in development mode
-- `bun run build`: Build all applications
-- `bun run check-types`: Check TypeScript types across all apps
-- `bun run check`: Run Biome formatting and linting
-- `bun run add`: Scaffold a new registry component/primitive
-- `bun run primitive:sync <name>`: Automatically sync AST dependencies for a primitive
-- `bun run registry:build`: Rebuild the static JSON registry
-
-## Cross-Repo Development (Global CLI)
-
-When building components in real-world applications (outside of this repo), it can be tedious to manually copy and paste them back into your registry docs. 
-
-We provide a **Global CLI** that can push a component from any local Next.js/React project directly into this registry template.
-
-1. Navigate to `packages/cli` and link it globally:
-   ```bash
-   cd packages/cli
-   bun link
-   ```
-2. From *any* other project on your machine, push a component:
-   ```bash
-   registry-cli push src/components/ui/my-new-card.tsx --type ui
-   ```
-3. The CLI will copy the file, resolve your registry directory, and automatically trigger the `primitive:sync` AST parser so your component is completely wired up.
-
-## AI Assistant Integration
-
-This repository ships with an **AI Workspace Skill** (`.antigravity/skills/create-registry-component/SKILL.md`). 
-
-If you are using an AI coding assistant (like Gemini, Claude, or Antigravity), simply ask it to **"create a new component called X"**. The AI will automatically read the skill file and know precisely how to:
-1. Use the `bun run add` scaffolding CLI.
-2. Write the component and demo.
-3. Sync the dependencies via `bun run primitive:sync`.
-4. Fill in the MDX documentation.
-5. Rebuild the `registry.json` endpoints.
-
-## Customizing this template
-
-- **Change site name, description, links, and nav**
-  - Edit `apps/docs/src/lib/config.ts` to update the site name, description, URLs, social links, and top navigation items.
-
-- **Customize documentation content**
-  - Docs live in `apps/docs/content/docs` as MDX files (for example: `index.mdx`, `components/*.mdx`).
-  - Adjust frontmatter and meta schemas in `apps/docs/source.config.ts` if you need custom fields.
-
-- **Customize shadcn registry items**
-  - Add or edit UI components under `apps/docs/src/registry/new-york-v4/ui`.
-  - Add or edit examples under `apps/docs/src/registry/new-york-v4/examples`.
-  - Control the exported registry (name, homepage, items) in `apps/docs/src/registry/index.ts` and `apps/docs/registry.json`.
-
-- **Update URLs and deployment metadata**
-  - Update the public site URL in `apps/docs/src/lib/config.ts` (`url` field).
-  - Update the registry homepage in `apps/docs/registry.json` and `apps/docs/src/registry/index.ts`.
